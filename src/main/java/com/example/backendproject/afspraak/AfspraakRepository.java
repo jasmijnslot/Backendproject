@@ -1,4 +1,9 @@
 package com.example.backendproject.afspraak;
 
-public class AfspraakRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AfspraakRepository extends JpaRepository<Afspraak, Long> {
+
 }

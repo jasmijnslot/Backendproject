@@ -1,4 +1,7 @@
 package com.example.backendproject.dier;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class DierRepository {
+@Repository
+public interface DierRepository extends JpaRepository<Dier, Long> {
 }
