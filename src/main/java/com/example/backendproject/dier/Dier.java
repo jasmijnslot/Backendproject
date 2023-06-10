@@ -2,10 +2,7 @@ package com.example.backendproject.dier;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -20,15 +17,19 @@ public class Dier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NonNull
     private Long id;
 
     @Column(name = "naam")
+    @NonNull
     private String naam;
 
     @Column(name = "geboortDatum")
+    @NonNull
     private Date geboorteDatum;
 
     @Column(name = "soort")
+    @NonNull
     private String soort;
 
 }

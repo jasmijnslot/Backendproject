@@ -2,10 +2,9 @@ package com.example.backendproject.dierenarts;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -13,10 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class DierenartsController {
 
     @Autowired
-    private DierenartsRepository dierenartsRepository;
+    private DierenartsService dierenartsService;
 
     @PostMapping("/dierenartsen")
-    public Dierenarts creatDierenarts(@RequestBody Dierenarts dierenarts){
-        return dierenartsRepository.save(dierenarts);
+    public Dierenarts nieuweDierenarts(@RequestBody Dierenarts dierenarts){
+        return dierenartsService.nieuweDierenarts(dierenarts);
     }
+
+    @GetMapping("/dierenartsen")
+    public List<Dierenarts> alleDierenartsen(){
+        return dierenartsService.dierenartsLijst();
+    }
+
+    @GetMapping("/dierenartsen/{id}")
+    public Dierenarts dierenartsPerId(@PathVariable Long id){
+        return dierenartsService.dierenartsPerId(id);
+    }
+
+    @DeleteMapping("/dierenartsen/{id}")
+    public void verwijderDierenarts(@PathVariable Long id){
+        dierenartsService.verwijderDierenarts(id);
+    }
+
 }

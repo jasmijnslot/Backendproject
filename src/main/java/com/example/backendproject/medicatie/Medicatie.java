@@ -1,10 +1,7 @@
 package com.example.backendproject.medicatie;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -17,14 +14,18 @@ public class Medicatie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NonNull
     private Long id;
 
     @Column(name = "naam")
+    @NonNull
     private String naam;
 
     @Column(name = "dosering")
+    @NonNull
     private String dosering;
 
     @Column(name = "opmerking")
+    @NonNull
     private String opmerking;
 }

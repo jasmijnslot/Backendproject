@@ -2,10 +2,8 @@ package com.example.backendproject.medicatie;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -13,11 +11,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class MedicatieController {
 
     @Autowired
-    private MedicatieRepository medicatieRepository;
+    private MedicatieService medicatieService;
 
     @PostMapping("/medicaties")
-    public Medicatie createMedicatie(@RequestBody Medicatie medicatie){
-        return medicatieRepository.save(medicatie);
+    public Medicatie nieuweMedicatie(@RequestBody Medicatie medicatie){
+        return medicatieService.nieuweMedicatie(medicatie);
+    }
+
+    @GetMapping("/medicaties")
+    public List<Medicatie> alleMedicatie(){
+        return medicatieService.medicatieLijst();
+    }
+
+    @GetMapping("/medicaties/{id}")
+    public Medicatie medicatiePerId(@PathVariable Long id){
+        return medicatieService.medicatiePerId(id);
+    }
+
+    @DeleteMapping("/medicaties/{id}")
+    public void verwijderMedicatie(@PathVariable Long id){
+        medicatieService.verwijderMedicatie(id);
     }
 
 }

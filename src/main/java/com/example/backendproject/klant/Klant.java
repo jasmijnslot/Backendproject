@@ -1,10 +1,7 @@
 package com.example.backendproject.klant;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -17,14 +14,23 @@ public class Klant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NonNull
     private Long id;
+
     @Column(name = "achterNaam")
+    @NonNull
     private String achterNaam;
+
     @Column(name = "telefoonNr")
+    @NonNull
     private String telefoonNr;
+
     @Column(name = "postcode")
+    @NonNull
     private String postcode;
+
     @Column(name = "email")
+    @NonNull
     private String email;
 
 

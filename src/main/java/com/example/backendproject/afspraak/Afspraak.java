@@ -1,10 +1,7 @@
 package com.example.backendproject.afspraak;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import java.util.Date;
 
 @Data
@@ -18,11 +15,14 @@ public class Afspraak {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NonNull
     private Long id;
 
+    @NonNull
     @Column(name = "datum")
     private Date datum;
 
+    @NonNull
     @Column(name = "reden")
     private String reden;
 

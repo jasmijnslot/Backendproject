@@ -2,10 +2,9 @@ package com.example.backendproject.paspoort;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -13,11 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaspoortController {
 
     @Autowired
-    private PaspoortRepository paspoortRepository;
+    private PaspoortService paspoortService;
 
     @PostMapping("/paspoorten")
-    public Paspoort createPaspoort(@RequestBody Paspoort paspoort){
-        return paspoortRepository.save(paspoort);
+    public Paspoort nieuwPaspoort(@RequestBody Paspoort paspoort){
+        return paspoortService.nieuwPaspoort(paspoort);
+    }
+
+    @GetMapping("/paspoorten")
+    public List<Paspoort> allePaspoorten(){
+        return paspoortService.paspoortLijst();
+    }
+
+    @GetMapping("/paspoorten/{id}")
+    public Paspoort paspoortPerId(@PathVariable Long id){
+        return paspoortService.paspoortPerId(id);
+    }
+
+    @DeleteMapping("/paspoorten/{id}")
+    public void verwijderPaspoort(@PathVariable Long id){
+        paspoortService.verwijderPaspoort(id);
     }
 
 }

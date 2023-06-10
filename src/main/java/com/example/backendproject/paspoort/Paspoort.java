@@ -1,10 +1,7 @@
 package com.example.backendproject.paspoort;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -19,12 +16,15 @@ public class Paspoort {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NonNull
     private Long id;
 
     @Column(name = "afgifteDatum")
+    @NonNull
     private Date afgifteDatum;
 
     @Column(name = "nummer")
+    @NonNull
     private String nummer;
 
 
