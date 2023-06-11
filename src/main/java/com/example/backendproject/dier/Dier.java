@@ -1,6 +1,7 @@
 package com.example.backendproject.dier;
 
 
+import com.example.backendproject.afspraak.Afspraak;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,12 +25,15 @@ public class Dier {
     @NonNull
     private String naam;
 
-    @Column(name = "geboortDatum")
+    @Column(name = "geboorteDatum")
     @NonNull
     private Date geboorteDatum;
 
     @Column(name = "soort")
     @NonNull
     private String soort;
+
+    @OneToOne(mappedBy = "dier")
+    private Afspraak afspraak;
 
 }

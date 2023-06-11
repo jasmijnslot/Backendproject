@@ -1,5 +1,6 @@
 package com.example.backendproject.afspraak;
 
+import com.example.backendproject.dier.Dier;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -25,6 +26,10 @@ public class Afspraak {
     @NonNull
     @Column(name = "reden")
     private String reden;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_id")
+    private Dier dier;
 
 
 }

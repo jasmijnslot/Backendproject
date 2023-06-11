@@ -26,6 +26,18 @@ public class Paspoort {
     @Column(name = "nummer")
     @NonNull
     private String nummer;
+    
+    @Column(name = "contentType")
+    @NonNull
+    private String contentType;
+    
+    @Lob
+    private byte[] paspoortScan;
 
 
+    public Paspoort(String nummer, String contentType, byte[] paspoortScan) {
+        this.nummer = nummer;
+        this.contentType = contentType;
+        this.paspoortScan = paspoortScan;
+    }
 }
